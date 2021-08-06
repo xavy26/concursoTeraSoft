@@ -11,7 +11,9 @@ router.get('/', function(req, res, next) {
 
 router.get('/register', (req, res) => {
   req.flash;
-  res.render('register', { title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message")});
+  let msg = req.flash("message");
+  console.log(msg);
+  res.render('register', { title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: msg});
 })
 
 router.get('/logout', (req, res) => {

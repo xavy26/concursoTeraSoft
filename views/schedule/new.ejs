@@ -5,7 +5,7 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
   <title>
     <%= title %>
   </title>
@@ -16,31 +16,31 @@
 
 <body>
 
-  <%- include('header') %>
+  <%- include('../header') %>
 
-    <h1 class="center">Regsitro de horario</h1>
+    <h1 class="center"><%if(schedule){%>Actualización<%}else{%>Registro<%}%> de horario</h1>
 
     <div class="container">
-      <form action="schelude/save" method="post">
+      <form action="/schedule/<%if(schedule){%>update/<%= schedule._id %><%}else{%>save<%}%>" method="post">
         <div class="row">
           <label class="col s2">
-            <input id="Lunes" name="Lunes" type="checkbox" />
+            <input id="Lunes" name="lunes" type="checkbox" <%if(schedule && schedule.days.includes("Lunes")){%>checked<%}%> />
             <span>Lunes</span>
           </label>
           <label class="col s2">
-            <input id="Martes" name="Martes" type="checkbox" />
+            <input id="Martes" name="martes" type="checkbox" <%if(schedule && schedule.days.includes("Martes")){%>checked<%}%> />
             <span>Martes</span>
           </label>
           <label class="col s2">
-            <input id="Miercoles" name="Miercoles" type="checkbox" />
-            <span>Miercoles</span>
+            <input id="Miercoles" name="miercoles" type="checkbox" <%if(schedule && schedule.days.includes("Miércoles")){%>checked<%}%> />
+            <span>Miércoles</span>
           </label>
           <label class="col s2">
-            <input id="jueves" name="Jueves" type="checkbox" />
+            <input id="jueves" name="jueves" type="checkbox" <%if(schedule && schedule.days.includes("Jueves")){%>checked<%}%> />
             <span>Jueves</span>
           </label>
           <label class="col s2">
-            <input id="viernes" name="Viernes" type="checkbox" />
+            <input id="viernes" name="viernes" type="checkbox" <%if(schedule && schedule.days.includes("Viernes")){%>checked<%}%> />
             <span>Viernes</span>
           </label>
         </div>
@@ -48,12 +48,12 @@
         <div class="row">
           <div class="input-field col s12 m6">
             <i class="material-icons prefix">person</i>
-            <input name="start1" id="start1" type="time" class="validate">
+            <input name="start1" id="start1" type="number" class="validate" <%if(schedule){%>value="<%= schedule.work_day_one.start %>"<%}%>>
             <label for="start1">Hora inicio</label>
           </div>
           <div class="input-field col s12 m6">
             <i class="material-icons prefix">badge</i>
-            <input name="end1" id="end1" type="time" class="validate">
+            <input name="end1" id="end1" type="number" class="validate" <%if(schedule){%>value="<%= schedule.work_day_one.end %>"<%}%>>
             <label for="end1">Hora fin</label>
           </div>
         </div>
@@ -61,12 +61,12 @@
         <div class="row">
           <div class="input-field col s12 m6">
             <i class="material-icons prefix">person</i>
-            <input name="start2" id="start2" type="time" class="validate">
+            <input name="start2" id="start2" type="number" class="validate" <%if(schedule){%>value="<%= schedule.work_day_two.start %>"<%}%>>
             <label for="start2">Hora inicio</label>
           </div>
           <div class="input-field col s12 m6">
             <i class="material-icons prefix">badge</i>
-            <input name="end2" id="end2" type="time" class="validate">
+            <input name="end2" id="end2" type="number" class="validate" <%if(schedule){%>value="<%= schedule.work_day_two.start %>"<%}%>>
             <label for="end2">Hora fin</label>
           </div>
         </div>
@@ -79,7 +79,7 @@
       </form>
     </div>
 
-    <%- include('footer') %>
+    <%- include('../footer') %>
 
 </body>
 

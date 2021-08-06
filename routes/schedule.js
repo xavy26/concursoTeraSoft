@@ -1,14 +1,14 @@
 var express = require('express');
 
-const controller = require('../controllers/shcedule.controller');
+const controller = require('../controllers/schedule.controller');
 
 var router = express.Router();
 
 /* GET home page. */
 router.get('/test', controller.test);
-router.get('/new', controller.register);
-// router.get('/edit/:id', controller.register);
-// router.get('/down/:id', controller.down);
+router.get('/new', controller.new);
+router.get('/edit/:id', controller.edit);
+router.get('/down/:id', controller.down);
 router.get('/get/:type/:search', controller.get);
 
 router.post('/update/:id', controller.update);
