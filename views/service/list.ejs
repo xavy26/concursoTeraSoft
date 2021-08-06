@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <title>
+    <%= title %>
+  </title>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+
+<body>
+
+  <%- include('header') %>
+
+    <h1 class="center">Servicios</h1>
+
+    <div class="container center">
+      <table class="responsive-table striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tiempo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% services.forEach(service=> { %>
+           <td><%= service.name %> </td>
+           <td><%= service.time %> </td>
+           <td></td>
+          <%  }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <a href="schedule/new" class="btn-floating btn-large waves-effect waves-light red"><i
+        class="material-icons">add</i></a>
+
+    <%- include('footer') %>
+
+</body>
+
+</html>

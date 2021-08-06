@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <title>
+    <%= title %>
+  </title>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+
+<body>
+
+  <%- include('header') %>
+
+    <h1 class="center">Horarios</h1>
+
+    <div class="container center">
+      <table class="responsive-table striped">
+        <thead>
+          <tr>
+            <th>Días</th>
+            <th>Primera Jornada</th>
+            <th>Segunda Jornada</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% shcedules.forEach(schelude=> { %>
+            <td>
+              <% schelude.days.forEach(day=> { %>
+                <%= day%> ,
+                <%  }); %>
+            </td>
+            <td>
+              <%= schelude.work_day_one.start1 %>  - <%= schelude.work_day_one.end1 %>
+            </td>
+            <% if (work_day_two) { %>
+              <td><% schelude.work_day_two.start2 %>  - <%= schelude.work_day_two.end2%></td>
+              <%     } %>
+              <%  }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <a href="schedule/new" class="btn-floating btn-large waves-effect waves-light red"><i
+        class="material-icons">add</i></a>
+
+    <%- include('footer') %>
+
+</body>
+
+</html>

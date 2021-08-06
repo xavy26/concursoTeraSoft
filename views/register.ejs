@@ -47,6 +47,37 @@
             <label for="password">Password</label>
           </div>
         </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select>
+              <option value="" disabled selected>Seleccione el servicio</option>
+              <% services.array.forEach(service => { %>
+                <option value="<%= service._id %> "><%= service.name %></option>
+              <% }); %>
+            </select>
+            <label>Servicio</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <select>
+              <option value="" disabled selected>Seleccione el horario</option>
+              <% schedules.array.forEach(schedule => { %>
+                <option value="<%= schedule._id %> "><%= schedule.work_day_one.start%> - <%= schedule.work_day_one.start%> <% if (work_day_two) {%> <% %> </option>
+              <% }); %>
+            </select>
+            <label>Materialize Select</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select>
+              <option value="" disabled selected>Tipo de funcionario</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+            <label>Materialize Select</label>
+          </div>
+        </div>
         <div class="row center">
           <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
             <i class="material-icons right">send</i>
