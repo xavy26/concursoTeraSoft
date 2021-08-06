@@ -23,6 +23,9 @@ exports.register = async (req, res) => {
         res.redirect('/service');
       });
     }
+  } else {
+    req.flash('message', { msg: "Campos vacios", status: 'warning' });
+    res.redirect('/services');
   }
 }
 
@@ -69,6 +72,9 @@ exports.update = async (req, res) => {
         res.redirect('/service');
       });
     }
+  } else {
+    req.flash('message', { msg: "Campos vacios", status: 'warning' });
+    res.redirect('/services');
   }
 }
 
@@ -97,5 +103,5 @@ exports.down = (req, res) => {
         res.redirect('/service');
       }
     }
-  })
+  });
 }
