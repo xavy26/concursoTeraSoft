@@ -6,6 +6,22 @@ exports.test = (req, res) => {
   res.end('Testing schedule controller');
 };
 
+exports.edit = (req, res) => {
+  Schedule.findOne({ _id: req.params.id }, (error, serv) => {
+    if (error) {
+      console.error(error);
+      req.flash('message', { msg: 'Error al encontrar el horario', status: 'error' });
+      res.redirect('/');
+    } else {
+      res.render('schedule/new', { schedule: serv, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
+    }
+  });
+};
+
+exports.new = (req, res) => {
+  res.render('schedule/new', { schedule: null, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
+};
+
 exports.register = async (req, res) => {
   let dias_mal = false;
   if (!req.body.lunes && !req.body.martes && !req.body.miercoles && !req.body.jueves && !req.body.viernes && !req.body.sabado && !req.body.domingo) {
@@ -77,7 +93,7 @@ exports.get = (req, res) => {
     } else {
       let arrayAux = [];
       arrayAux.push(schedule)
-      res.render('shcedule/list', { shcedules: arrayAux });
+      res.render('shcedule/list', { shcedules: arrayAux, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
     }
   });
 };

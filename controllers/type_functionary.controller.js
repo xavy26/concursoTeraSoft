@@ -6,6 +6,22 @@ exports.test = (req, res) => {
   res.end('Testing type functionary controller');
 };
 
+exports.edit = (req, res) => {
+  Type_Functionary.findOne({ _id: req.params.id }, (error, serv) => {
+    if (error) {
+      console.error(error);
+      req.flash('message', { msg: 'Error al encontrar el tipo de funcionario', status: 'error' });
+      res.redirect('/');
+    } else {
+      res.render('typeFuntionary/new', { type_func: serv, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
+    }
+  });
+};
+
+exports.new = (req, res) => {
+  res.render('typeFuntionary/new', { type_func: null, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
+};
+
 exports.register = async (req, res) => {
   if (req.body.type_name) {
     let type_func_Find = await Type_Functionary.findOne({ name: req.body.type_name });
@@ -45,7 +61,7 @@ exports.get = (req, res) => {
     } else {
       let arrayAux = [];
       arrayAux.push(type_func)
-      res.render('type_functionary/list', { types: arrayAux });
+      res.render('typeFuntionary/list', { types: arrayAux, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
     }
   });
 };

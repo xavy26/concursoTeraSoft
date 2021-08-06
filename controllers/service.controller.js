@@ -6,6 +6,22 @@ exports.test = (req, res) => {
   res.end('Testing service controller');
 };
 
+exports.edit = (req, res) => {
+  Service.findOne({ _id: req.params.id }, (error, serv) => {
+    if (error) {
+      console.error(error);
+      req.flash('message', { msg: 'Error al encontrar el servicio', status: 'error' });
+      res.redirect('/');
+    } else {
+      res.render('service/new', { service: serv, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
+    }
+  });
+};
+
+exports.new = (req, res) => {
+  res.render('service/new', { service: null, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
+};
+
 exports.register = async (req, res) => {
   if (req.body.name && req.body.time) {
     let servFind = await Service.findOne({ name: req.body.name });
@@ -38,7 +54,7 @@ exports.get = (req, res) => {
     } else {
       let arrayAux = [];
       arrayAux.push(serv)
-      res.render('service/list', { services: arrayAux });
+      res.render('service/list', { services: arrayAux, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
     }
   });
 };

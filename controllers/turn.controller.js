@@ -59,7 +59,7 @@ exports.get = (req, res) => {
     } else {
       let arrayAux = [];
       arrayAux.push(turn)
-      res.render('turn/list', { turns: arrayAux });
+      res.render('turn/list', { turns: arrayAux, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message") });
     }
   });
 };

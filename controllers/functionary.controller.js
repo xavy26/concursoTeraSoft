@@ -26,7 +26,7 @@ exports.get = (req, res) => {
     } else {
       let arrayAux = [];
       arrayAux.push(func)
-      res.render('functionary/list', { functionaries: arrayAux });
+      res.render('functionary/list', { functionaries: arrayAux, title: 'GAD Tulcan', isAuth: req.isAuthenticated(), message: req.flash("message")});
     }
   });
 };

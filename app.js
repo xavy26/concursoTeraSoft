@@ -72,7 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/type/functinary', type_funcRouter);
+app.use('/type/functionary', type_funcRouter);
 app.use('/functionary', funcRouter);
 app.use('/service', servRouter);
 app.use('/schedule', schedRouter);

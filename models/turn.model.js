@@ -7,6 +7,10 @@ const TurnModel = Schema({
   functinary: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Functionary"
+  },
+  state: {
+    type: Boolean,
+    default: true
   }
 }, {
   timestamps: {

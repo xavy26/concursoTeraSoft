@@ -5,7 +5,7 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
   <title>
     <%= title %>
   </title>
@@ -17,22 +17,22 @@
 
 <body>
 
-  <%- include('header') %>
+  <%- include('../header') %>
 
-    <h1 class="center">Regsitro de servicio</h1>
+    <h1 class="center"><%if(service){%>Actualización<%}else{%>Registro<%}%> de servicio</h1>
 
     <div class="container">
-      <form action="service/save" method="post">
+      <form action="/service/<%if(service){%>update/<%= service._id %><%}else{%>save<%}%>" method="post">
         <div class="row">
           <div class="input-field col s12 m6">
             <i class="material-icons prefix">person</i>
-            <input name="name" id="name" type="text" class="validate">
+            <input name="name" id="name" type="text" class="validate" <%if(service){%>value="<%= service.name %>"<%}%>>
             <label for="name">Nombre</label>
           </div>
           <div class="input-field col s12 m6">
             <i class="material-icons prefix">badge</i>
-            <input name="time" id="time" type="number" class="validate">
-            <label for="time">Cédula</label>
+            <input name="time" id="time" type="number" class="validate" <%if(service){%>value="<%= service.time %>"<%}%>>
+            <label for="time">Tiempo de atención</label>
           </div>
         </div>
         <div class="row center">
@@ -44,7 +44,7 @@
       </form>
     </div>
 
-    <%- include('footer') %>
+    <%- include('../footer') %>
 
 </body>
 
