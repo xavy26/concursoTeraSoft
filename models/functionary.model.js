@@ -5,6 +5,10 @@ const TypeFunctionaryModel = Schema({
   name: String,
   dni: String,
   email: String,
+  state: {
+    type: Boolean,
+    default: true
+  },
   isAdmin: {
     type: Boolean,
     default: false,

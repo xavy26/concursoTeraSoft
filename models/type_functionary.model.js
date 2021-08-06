@@ -3,7 +3,10 @@ const { Schema } = mongoose;
 
 const TypeFunctionaryModel = Schema({
   type_name: String,
-  state: Boolean
+  state: {
+    type: Boolean,
+    default: true
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',

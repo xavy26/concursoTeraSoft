@@ -11,7 +11,10 @@ const ScheludeModel = Schema({
     start: Number,
     end: Number,
   },
-  state: Boolean
+  state: {
+    type: Boolean,
+    default: true
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',
