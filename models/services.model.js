@@ -2,9 +2,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose; 
 
 const ServiceModel = Schema({
-  service_name: String,
+  name: String,
   time: Number,
-  state: Boolean
+  state: {
+    type: Boolean,
+    default: true
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',
