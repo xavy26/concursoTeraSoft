@@ -13,6 +13,11 @@ const upload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var funcRouter = require('./routes/functionary');
+var type_funcRouter = require('./routes/type_functionary');
+var schedRouter = require('./routes/schedule');
+var turnRouter = require('./routes/turn');
+var servRouter = require('./routes/service');
 
 let dev_db_url = 'mongodb://localhost/terasoft';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
@@ -67,6 +72,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/type/functinary', type_funcRouter);
+app.use('/functionary', funcRouter);
+app.use('/service', servRouter);
+app.use('/schedule', schedRouter);
+app.use('/turn', turnRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
