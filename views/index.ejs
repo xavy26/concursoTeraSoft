@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <title><%= title %></title>
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <title>
+    <%= title %>
+  </title>
 
-  <body>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-    <body>
-      <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
-    </body>
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-  </body>
+
+<body>
+
+  <%- include('header') %>
+
+    <h1 class="center">Ingresar</h1>
+
+    <div class="container center">
+      <div class="card">
+        <form action="/auth" method="post">
+          <div class="card-content">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input name="email" id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">password</i>
+                <input name="password" id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+          </div>
+          <div class="card-action">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <%- include('footer') %>
+
+</body>
+
 </html>

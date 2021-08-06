@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose; 
 
 const TypeFunctionaryModel = Schema({
-  type_name: String,
+  name: String,
   state: {
     type: Boolean,
     default: true

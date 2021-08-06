@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose; 
 
-const TypeFunctionaryModel = Schema({
+const FunctionaryModel = Schema({
   name: String,
   dni: String,
   email: String,
+  password: String,
   state: {
     type: Boolean,
     default: true
@@ -13,7 +14,6 @@ const TypeFunctionaryModel = Schema({
     type: Boolean,
     default: false,
   },
-  password: String,
   service: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Service"
@@ -33,4 +33,4 @@ const TypeFunctionaryModel = Schema({
  }
 });
 
-module.exports = mongoose.model('TypeFunctionary', TypeFunctionaryModel);
+module.exports = mongoose.model('Functionary', FunctionaryModel);

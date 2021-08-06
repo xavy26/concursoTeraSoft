@@ -16,12 +16,13 @@ module.exports = (passport) => {
     }
   });
 
-  passport.use('local-sigup', new localStrategy({
+  passport.use('local-singup', new localStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
   },
     (req, email, password, done) => {
+      console.log('registro')
       if (req.body.email && req.body.password && req.body.name && req.body.dni && req.body.service && req.body.schelude && req.body.type_functionary) {
         var generateHash = function (password) {
           return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
@@ -60,6 +61,7 @@ module.exports = (passport) => {
       passwordField: 'password',
       passReqToCallback: true
     }, (req, email, password, done) => {
+      console.log('login');
       if (email, password) {
         Functionry.findOne({email: email}, (errorFind, funcFind) => {
           if (errorFind) {

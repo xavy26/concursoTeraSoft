@@ -1,0 +1,31 @@
+<header>
+  <nav class="teal">
+    <div class="nav-wrapper container">
+      <a href="#!" class="brand-logo">
+        <%= title %>
+      </a>
+      <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <% if (isAuth) {%> 
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">Javascript</a></li>
+          <li><a href="mobile.html">Mobile</a></li>
+        <%} else {%>
+          <li><a href="register">Registrarme</a></li>
+        <% } %>  
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <% if (isAuth) {%> 
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    <%} else {%>
+      <li><a href="register">Registrarme</a></li>
+    <% } %>  
+  </ul>
+</header>
