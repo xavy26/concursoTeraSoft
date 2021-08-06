@@ -19,24 +19,32 @@
 
   <%- include('header') %>
 
-    <h1 class="center">Servicios</h1>
+    <h1 class="center">Horarios</h1>
 
     <div class="container center">
       <table class="responsive-table striped">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Tiempo</th>
-            <th>Acciones</th>
+            <th>Días</th>
+            <th>Primera Jornada</th>
+            <th>Segunda Jornada</th>
           </tr>
         </thead>
 
         <tbody>
-          <% services.forEach(service=> { %>
-           <td><%= service.name %> </td>
-           <td><%= service.time %> </td>
-           <td></td>
-          <%  }); %>
+          <% shcedules.forEach(schelude=> { %>
+            <td>
+              <% schelude.days.forEach(day=> { %>
+                <%= day%> ,
+                <%  }); %>
+            </td>
+            <td>
+              <%= schelude.work_day_one.start1 %>  - <%= schelude.work_day_one.end1 %>
+            </td>
+            <% if (work_day_two) { %>
+              <td><% schelude.work_day_two.start2 %>  - <%= schelude.work_day_two.end2%></td>
+              <%     } %>
+              <%  }); %>
         </tbody>
       </table>
     </div>
